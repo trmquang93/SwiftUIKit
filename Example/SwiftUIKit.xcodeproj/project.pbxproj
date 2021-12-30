@@ -40,10 +40,10 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		628D0DCE25B75F89072E82FD /* Pods_SwiftUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8547E93BBD4C1F066857E86B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		8547E93BBD4C1F066857E86B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		8D8796D57ED316903A2D8868 /* Pods-SwiftUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Example/Pods-SwiftUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A75B9D65469EFDB9E664BC3B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		CEBE4823F7ABCBD11BF2DCB5 /* SwiftUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SwiftUIKit.podspec; path = ../SwiftUIKit.podspec; sourceTree = "<group>"; };
+		A75B9D65469EFDB9E664BC3B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		CEBE4823F7ABCBD11BF2DCB5 /* SwiftUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftUIKit.podspec; path = ../SwiftUIKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F104A9B08AF4CD9A96572F3F /* Pods-SwiftUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Tests/Pods-SwiftUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F2857D6B014E39DB59BFA26D /* Pods-SwiftUIKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Example.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Example/Pods-SwiftUIKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		FF1B6C45D06150610722290E /* Pods-SwiftUIKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Tests/Pods-SwiftUIKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,7 +156,6 @@
 				FF1B6C45D06150610722290E /* Pods-SwiftUIKit_Tests.debug.xcconfig */,
 				F104A9B08AF4CD9A96572F3F /* Pods-SwiftUIKit_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
