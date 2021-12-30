@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'SwiftUIKit_Example' do
+  pod 'SwiftUIKit', :path => '../'
+
+  target 'SwiftUIKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
