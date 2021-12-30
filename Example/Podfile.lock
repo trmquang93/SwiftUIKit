@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftUIKit: c37157b9fbbf97b7ba77bfb7d60ffdca7dcb2a4a
+  SwiftUIKit: 884d8a8b9a3bc3a5106b61e680b6fe9281a1371d
 
 PODFILE CHECKSUM: 2f23f01c778831f0492d1af0c052cdfdd5ee5aed
 

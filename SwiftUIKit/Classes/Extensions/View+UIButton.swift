@@ -38,3 +38,12 @@ extension View where T: UIButton {
         return self
     }
 }
+
+public extension UIButton {
+    func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
+        let ciImage = CIImage(color: CIColor(color: color)).cropped(to: CGRect(x: 0, y: 0, width: 1, height: 1))
+        let colorImage = UIImage(ciImage: ciImage)
+        setBackgroundImage(colorImage, for: state)
+    }
+}
+
