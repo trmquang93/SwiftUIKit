@@ -24,12 +24,16 @@ public extension View {
     }
     
     func left(_ target: LayoutTarget) -> Self {
-        
+        let constraint = LayoutConstraint(anchor: .left, target: target)
+        var new = self
+        new.layoutConstraints.append(constraint)
         return self
     }
     
     func right(_ target: LayoutTarget) -> Self {
-        
+        let constraint = LayoutConstraint(anchor: .right, target: target)
+        var new = self
+        new.layoutConstraints.append(constraint)
         return self
     }
     
@@ -41,17 +45,23 @@ public extension View {
     }
     
     func trailing(_ target: LayoutTarget) -> Self {
-        
+        let constraint = LayoutConstraint(anchor: .trailing, target: target)
+        var new = self
+        new.layoutConstraints.append(constraint)
         return self
     }
     
     func centerX(_ target: LayoutTarget) -> Self {
-        
+        let constraint = LayoutConstraint(anchor: .centerX, target: target)
+        var new = self
+        new.layoutConstraints.append(constraint)
         return self
     }
     
     func centerY(_ target: LayoutTarget) -> Self {
-        
+        let constraint = LayoutConstraint(anchor: .centerY, target: target)
+        var new = self
+        new.layoutConstraints.append(constraint)
         return self
     }
     
