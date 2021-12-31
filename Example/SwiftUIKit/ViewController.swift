@@ -20,13 +20,14 @@ class ViewController: UIViewController {
             
             SafeArea(edges: [.bottom, .right]) {
                 
-                UIButton(type: .system).with
+                UIButton(type: .system)
+                    .with
                     .height(60)
                     .width(144)
                     .trailing(27)
                     .bottom(31)
                     .borderColor(UIColor.white.cgColor)
-                    .cornerRadius(10)
+                    .cornerRadius(7)
                     .borderWidth(1)
                     .title("Get started", for: .normal)
                     .titleColor(.white, for: .normal)
@@ -57,6 +58,5 @@ class ViewController: UIViewController {
                 .bottom(224)
         }
     }
-
 }
 

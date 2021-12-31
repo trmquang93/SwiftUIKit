@@ -50,6 +50,11 @@ extension View where T: UIButton {
         view.setBackgroundColor(color, for: state)
         return self
     }
+    
+    public func onTap(_ target: Any?, action: Selector) -> Self {
+        view.addTarget(target, action: action, for: .touchUpInside)
+        return self
+    }
 }
 
 public extension UIButton {

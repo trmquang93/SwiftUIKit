@@ -9,7 +9,7 @@ import UIKit
 
 @dynamicMemberLookup
 public struct View<T: UIView> {
-    let view: T
+    var view: T
     
     var layoutConstraints: [LayoutConstraint] { view.layoutConstraints }
     
