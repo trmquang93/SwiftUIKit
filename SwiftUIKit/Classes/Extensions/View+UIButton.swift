@@ -9,7 +9,13 @@ import UIKit
 
 extension View where T: UIButton {
     public func title(_ title: String?, for state: UIControl.State) -> Self {
-        view.setTitle(title, for: state)
+        if let currentAttributedTitle = view.currentAttributedTitle {
+            let newTitle = NSMutableAttributedString(attributedString: currentAttributedTitle)
+            newTitle.replaceCharacters(in: NSRange(location: 0, length: currentAttributedTitle.length), with: title ?? " ")
+            view.setAttributedTitle(newTitle, for: state)
+        } else {
+            view.setAttributedTitle(NSAttributedString(string: title ?? " "), for: state)
+        }
         return self
     }
     
@@ -19,9 +25,9 @@ extension View where T: UIButton {
     }
     
     public func font(_ font: UIFont?, for state: UIControl.State) -> Self {
-        let title = view.currentAttributedTitle ?? view.currentTitle.map({NSAttributedString(string: $0)})
-        let newTitle = title.map({NSMutableAttributedString(attributedString: $0)})
-        newTitle?.setAttributes([.font: font as Any], range: NSRange(location: 0, length: title?.length ?? 0))
+        let title = view.currentAttributedTitle ?? NSAttributedString(string: view.currentTitle ?? " ")
+        let newTitle = NSMutableAttributedString(attributedString: title)
+        newTitle.setAttributes([.font: font as Any], range: NSRange(location: 0, length: title.length))
         view.setAttributedTitle(newTitle, for: state)
         return self
     }

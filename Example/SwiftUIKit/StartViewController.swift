@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  StartViewController.swift
 //  SwiftUIKit
 //
 //  Created by QuangTran on 12/30/2021.
@@ -9,10 +9,15 @@
 import UIKit
 import SwiftUIKit
 
-class ViewController: UIViewController {
+class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        view
+            .update(\.backgroundColor, value: .white)
         
         view.body {
             
@@ -20,18 +25,9 @@ class ViewController: UIViewController {
             
             SafeArea(edges: [.bottom, .right]) {
                 
-                UIButton(type: .system)
-                    .with
-                    .height(60)
-                    .width(144)
-                    .trailing(27)
-                    .bottom(31)
-                    .borderColor(UIColor.white.cgColor)
-                    .cornerRadius(7)
-                    .borderWidth(1)
+                UIButton.actionButton
                     .title("Get started", for: .normal)
-                    .titleColor(.white, for: .normal)
-                    .font(.systemFont(ofSize: 24), for: .normal)
+                    .onTap(self, action: #selector(buttonAction))
                 
             }
             
@@ -57,6 +53,11 @@ class ViewController: UIViewController {
                 .leading(60)
                 .bottom(224)
         }
+    }
+    
+    @objc func buttonAction() {
+        let viewController = LoginViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
