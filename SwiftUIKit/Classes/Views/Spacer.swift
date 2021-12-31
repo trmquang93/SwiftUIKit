@@ -8,14 +8,14 @@
 import UIKit
 
 public class Spacer: UIView {
-    init(width: CGFloat) {
+    public init(width: CGFloat) {
         super.init(frame: .zero)
         NSLayoutConstraint.activate {
             widthAnchor.constraint(equalToConstant: width)
         }
     }
     
-    init(height: CGFloat) {
+    public init(height: CGFloat) {
         super.init(frame: .zero)
         NSLayoutConstraint.activate {
             heightAnchor.constraint(equalToConstant: height)

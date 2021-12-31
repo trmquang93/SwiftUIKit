@@ -30,6 +30,7 @@ public struct View<T: UIView> {
             return update(newValue)
         }
     }
+    
 }
 
 extension View: ViewObject {

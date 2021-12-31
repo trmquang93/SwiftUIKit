@@ -10,7 +10,7 @@ import UIKit
 public class Container: UIView {
     weak var contentView: UIView!
     
-    init(@BodyBuilder content: BodyBuildBlock) {
+    public init(@BodyBuilder content: BodyBuildBlock) {
         super.init(frame: .zero)
         
         let view = UIView()
@@ -42,7 +42,7 @@ public class Container: UIView {
 
 public class Center: Container {
     
-    override init(@BodyBuilder content: BodyBuildBlock) {
+    public override init(@BodyBuilder content: BodyBuildBlock) {
         super.init(content: content)
         NSLayoutConstraint.activate {
             contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
@@ -57,7 +57,7 @@ public class Center: Container {
 
 public class CenterVertically: Container {
     
-    override init(@BodyBuilder content: BodyBuildBlock) {
+    public override init(@BodyBuilder content: BodyBuildBlock) {
         super.init(content: content)
         NSLayoutConstraint.activate {
             contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
@@ -72,7 +72,7 @@ public class CenterVertically: Container {
 }
 
 public class CenterHorizontally: Container {
-    override init(@BodyBuilder content: BodyBuildBlock) {
+    public override init(@BodyBuilder content: BodyBuildBlock) {
         super.init(content: content)
         
         NSLayoutConstraint.activate {

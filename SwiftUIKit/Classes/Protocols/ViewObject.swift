@@ -55,7 +55,7 @@ extension UIView {
         for sv in subviews {
 
             if sv.layoutConstraints.isEmpty {
-                guard let superView = sv.superview else { continue }
+                guard let superView = sv.superview, superView as? UIStackView == nil else { continue }
                 NSLayoutConstraint.activate {
                     sv.topAnchor.constraint(equalTo: superView.topAnchor)
                     sv.bottomAnchor.constraint(equalTo: superView.bottomAnchor)

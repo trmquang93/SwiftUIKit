@@ -145,3 +145,33 @@ extension UIView {
         return firstCommonParent(with: otherView) != nil
     }
 }
+
+
+public extension UIView {
+    var cornerRadius: CGFloat {
+        get {
+            layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+        }
+    }
+    
+    var borderWidth: CGFloat {
+        get {
+            layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    var borderColor: CGColor? {
+        get {
+            layer.borderColor
+        }
+        set {
+            layer.borderColor = newValue
+        }
+    }
+}

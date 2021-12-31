@@ -8,7 +8,7 @@
 import UIKit
 
 public class Padding: Container {
-    init(padding: UIEdgeInsets, @BodyBuilder content: BodyBuildBlock) {
+    public init(padding: UIEdgeInsets, @BodyBuilder content: BodyBuildBlock) {
         super.init(content: content)
         
         NSLayoutConstraint.activate {

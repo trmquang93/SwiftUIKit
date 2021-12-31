@@ -9,7 +9,7 @@ import UIKit
 
 
 public class SafeArea: Container {
-    init(edges: UIRectEdge, @BodyBuilder content: BodyBuildBlock) {
+    public init(edges: UIRectEdge, @BodyBuilder content: BodyBuildBlock) {
         super.init(content: content)
         
         NSLayoutConstraint.activate {

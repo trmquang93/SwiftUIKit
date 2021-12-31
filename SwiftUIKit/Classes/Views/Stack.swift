@@ -7,5 +7,5 @@
 
 import UIKit
 
-class Stack: UIStackView {
+public class Stack: UIStackView {
 }

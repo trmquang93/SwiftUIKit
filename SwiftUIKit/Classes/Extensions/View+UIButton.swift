@@ -13,6 +13,19 @@ extension View where T: UIButton {
         return self
     }
     
+    public func attributedTitle(_ title: NSAttributedString?, for state: UIControl.State) -> Self {
+        view.setAttributedTitle(title, for: state)
+        return self
+    }
+    
+    public func font(_ font: UIFont?, for state: UIControl.State) -> Self {
+        let title = view.currentAttributedTitle ?? view.currentTitle.map({NSAttributedString(string: $0)})
+        let newTitle = title.map({NSMutableAttributedString(attributedString: $0)})
+        newTitle?.setAttributes([.font: font as Any], range: NSRange(location: 0, length: title?.length ?? 0))
+        view.setAttributedTitle(newTitle, for: state)
+        return self
+    }
+    
     public func titleColor(_ color: UIColor?, for state: UIControl.State) -> Self {
         view.setTitleColor(color, for: state)
         return self
@@ -28,7 +41,7 @@ extension View where T: UIButton {
         return self
     }// default is nil. should be same size if different for different states
     
-    public func setBackgroundImage(_ image: UIImage?, for state: UIControl.State) -> Self {
+    public func backgroundImage(_ image: UIImage?, for state: UIControl.State) -> Self {
         view.setBackgroundImage(image, for: state)
         return self
     }
@@ -45,5 +58,6 @@ public extension UIButton {
         let colorImage = UIImage(ciImage: ciImage)
         setBackgroundImage(colorImage, for: state)
     }
+    
 }
 
