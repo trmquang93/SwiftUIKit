@@ -26,16 +26,13 @@ extension ViewObject where Self: UIStackView {
     
     @discardableResult
     public func arrange(_ content: [UIView]) -> Self {
+
         for sv in content {
             addArrangedSubview(sv)
             sv.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        for sv in content {
-            NSLayoutConstraint.activate(sv.layoutConstraints)
-        }
-        
-        return self
+        return activeContraints(inSubviews: content)
     }
     
 }

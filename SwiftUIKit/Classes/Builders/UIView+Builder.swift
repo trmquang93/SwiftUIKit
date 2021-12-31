@@ -41,7 +41,6 @@ extension ViewObject where Self: UIView {
     public func body(@BodyBuilder content: BodyBuildBlock) -> Self {
         let objects = content()
         var subviews: [UIView] = []
-        
         for object in objects {
             if let sv = object as? ViewObject {
                 subviews.append(sv.object)
@@ -55,23 +54,11 @@ extension ViewObject where Self: UIView {
             sv.object.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        for sv in subviews {
-            guard let superView = sv.superview else { continue }
-            
-            if sv.layoutConstraints.isEmpty {
-                NSLayoutConstraint.activate {
-                    sv.topAnchor.constraint(equalTo: superView.topAnchor)
-                    sv.bottomAnchor.constraint(equalTo: superView.bottomAnchor)
-                    sv.leadingAnchor.constraint(equalTo: superView.leadingAnchor)
-                    sv.trailingAnchor.constraint(equalTo: superView.trailingAnchor)
-                }
-            } else {
-                NSLayoutConstraint.activate(sv.layoutConstraints)
-            }
-        }
+        let new = activeContraints(inSubviews: subviews)
         
-        return self
+        return new
     }
+    
     
     @discardableResult
     public func body(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {

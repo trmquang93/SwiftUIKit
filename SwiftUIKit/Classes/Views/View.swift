@@ -11,12 +11,14 @@ import UIKit
 public struct View<T: UIView> {
     let view: T
     
-    init(_ view: T) {
+    var layoutConstraints: [LayoutConstraint] { view.layoutConstraints }
+    
+    public init(_ view: T) {
         self.view = view
     }
     
     
-    subscript<V>(dynamicMember member: WritableKeyPath<T, V>) -> ((V) -> View<T>) where T: UIView {
+    public subscript<V>(dynamicMember member: WritableKeyPath<T, V>) -> ((V) -> View<T>) where T: UIView {
         
         @discardableResult
         func update(_ value: V) -> Self {
