@@ -14,10 +14,10 @@ extension UIStackView {
         var subviews: [UIView] = []
         
         for object in objects {
-            if let sv = object as? UIView {
-                subviews.append(sv)
-            } else if let svs = object as? [UIView] {
-                subviews.append(contentsOf: svs.map({$0}))
+            if let sv = object as? ViewObject {
+                subviews.append(sv.viewObject)
+            } else if let svs = object as? [ViewObject] {
+                subviews.append(contentsOf: svs.map({$0.viewObject}))
             }
         }
         

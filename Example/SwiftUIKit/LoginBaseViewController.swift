@@ -10,8 +10,6 @@ import SwiftUIKit
 
 class LoginBaseViewController: UIViewController {
     
-    weak var bottomView: SafeArea!
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -24,7 +22,7 @@ class LoginBaseViewController: UIViewController {
             .update(\.backgroundColor, value: .white)
         
         view.body {
-
+            
             UIImageView(imageNamed: "background")
             
             UIImageView(imageNamed: "bottom_background").with
@@ -32,16 +30,6 @@ class LoginBaseViewController: UIViewController {
                 .leading(0)
                 .trailing(0)
                 .top(to: .bottom, -170)
-
-            bottomView <~ SafeArea(edges: [.bottom, .right, .left]) {
-                UIButton.actionButton
-                    .trailing(27)
-                    .bottom(0)
-            }.with
-                .bottom(10)
-                .leading(0)
-                .trailing(0)
-
         }
     }
 }

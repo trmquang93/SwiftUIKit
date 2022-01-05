@@ -13,9 +13,9 @@ fileprivate struct SerializedKeys {
 }
 
 extension UIView {
-    var layoutConstraints: [Any] {
+    var layoutConstraints: [ConstraintProtocol] {
         get {
-            objc_getAssociatedObject(self, &SerializedKeys.layout) as? [Any] ?? []
+            objc_getAssociatedObject(self, &SerializedKeys.layout) as? [ConstraintProtocol] ?? []
         }
         set {
             objc_setAssociatedObject(self, &SerializedKeys.layout, newValue, .OBJC_ASSOCIATION_RETAIN)
@@ -26,8 +26,6 @@ extension UIView {
 
 extension UIView {
     func activeContraints(inSubviews subviews: [UIView]) -> Self {
-        var constraints: [LayoutConstraint] = []
-        
         for sv in subviews {
 
             if sv.layoutConstraints.isEmpty {
@@ -40,28 +38,71 @@ extension UIView {
                 }
             } else {
                 for constraint in sv.layoutConstraints {
-                    if let xAxisConstraint = constraint as? Constraint<XAxisAnchor> {
-                        
-                    }
-//
-//                    if let view = constraint.target as? UIView {
-//                        guard view.hasCommonParent(with: sv) else {
-//                            constraints.append(constraint)
-//                            continue
-//                        }
-//                        activeConstraint(constraint, from: sv)
-//                    } else {
-//                        activeConstraint(constraint, from: sv)
-//                    }
+                    activeConstraint(constraint, from: sv)
                 }
             }
         }
         
-        layoutConstraints.append(contentsOf: constraints)
         
         return self
     }
     
+    
+    private func activeConstraint(_ constraint: ConstraintProtocol, from view: UIView) {
+        if let xAxisConstraint = constraint as? Constraint<XAxisAnchor> {
+            let fromAnchor: NSLayoutXAxisAnchor = xAxisConstraint.fromAnchor.anchor(for: view)
+            let toAnchor: NSLayoutXAxisAnchor = xAxisConstraint.toAnchor!.anchor(for: self)
+            switch xAxisConstraint.relation {
+            case .lessThanOrEqual:
+                fromAnchor.constraint(lessThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+            case .equal:
+                fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+            case .greaterThanOrEqual:
+                fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+            }
+        }
+        else if let yAxisConstraint = constraint as? Constraint<YAxisAnchor> {
+            let fromAnchor: NSLayoutYAxisAnchor = yAxisConstraint.fromAnchor.anchor(for: view)
+            let toAnchor: NSLayoutYAxisAnchor = yAxisConstraint.toAnchor!.anchor(for: self)
+            switch yAxisConstraint.relation {
+            case .lessThanOrEqual:
+                fromAnchor.constraint(lessThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+            case .equal:
+                fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+            case .greaterThanOrEqual:
+                fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+            }
+        }
+        
+        else if let dimensionAnchor = constraint as? Constraint<DimensionAnchor> {
+            let fromAnchor: NSLayoutDimension = dimensionAnchor.fromAnchor.anchor(for: view)
+            let constant = CGFloat(constraint.constant)
+            
+            let toAnchor: NSLayoutDimension? = dimensionAnchor.toAnchor?.anchor(for: self)
+            
+            switch dimensionAnchor.relation {
+            case .lessThanOrEqual:
+                if let to = toAnchor {
+                    fromAnchor.constraint(lessThanOrEqualTo: to, constant: constant).isActive = true
+                } else {
+                    fromAnchor.constraint(lessThanOrEqualToConstant: constant).isActive = true
+                }
+            case .equal:
+                if let to = toAnchor {
+                    fromAnchor.constraint(equalTo: to, constant: constant).isActive = true
+                } else {
+                    fromAnchor.constraint(equalToConstant: constant).isActive = true
+                }
+            case .greaterThanOrEqual:
+                
+                if let to = toAnchor {
+                    fromAnchor.constraint(greaterThanOrEqualTo: to, constant: constant).isActive = true
+                } else {
+                    fromAnchor.constraint(greaterThanOrEqualToConstant: constant).isActive = true
+                }
+            }
+        }
+    }
     
     private func activeConstraint(_ constraint: LayoutConstraint, from view: UIView) {
         let targetView: UIView? = constraint.target as? UIView

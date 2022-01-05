@@ -9,23 +9,15 @@
 import UIKit
 import SwiftUIKit
 
-class StartViewController: UIViewController {
+class StartViewController: LoginBaseViewController {
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        view
-            .update(\.backgroundColor, value: .white)
-        
         view.body {
             
-            UIImageView(imageNamed: "background")
-            
             SafeArea(edges: [.bottom, .right]) {
-                
                 UIButton.actionButton
                     .trailing(27)
                     .bottom(31)

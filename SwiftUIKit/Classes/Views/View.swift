@@ -11,7 +11,7 @@ public typealias View = With
 
 extension View where T: UIView {
     
-    var view: T { return object }
+    public var view: T { return object }
 }
 
 extension View where T: UIView {
