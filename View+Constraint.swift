@@ -8,13 +8,19 @@
 import Foundation
 import UIKit
 
-public extension View {
-    func top(_ target: LayoutTarget) -> Self {
-        let constraint = LayoutConstraint(anchor: .top, target: target)
-        var new = self
-        new.layoutConstraints.append(constraint)
-        return new
+extension View where T: UIView {
+    
+    var layoutConstraints: [Any] {
+        get {
+            return object.layoutConstraints
+        }
+        set {
+            object.layoutConstraints = newValue
+        }
     }
+}
+
+public extension View where T: UIView {
     
     func bottom(_ target: LayoutTarget) -> Self {
         let constraint = LayoutConstraint(anchor: .bottom, target: target)
@@ -27,14 +33,14 @@ public extension View {
         let constraint = LayoutConstraint(anchor: .left, target: target)
         var new = self
         new.layoutConstraints.append(constraint)
-        return self
+        return new
     }
     
     func right(_ target: LayoutTarget) -> Self {
         let constraint = LayoutConstraint(anchor: .right, target: target)
         var new = self
         new.layoutConstraints.append(constraint)
-        return self
+        return new
     }
     
     func leading(_ target: LayoutTarget) -> Self {
@@ -48,35 +54,59 @@ public extension View {
         let constraint = LayoutConstraint(anchor: .trailing, target: target)
         var new = self
         new.layoutConstraints.append(constraint)
-        return self
+        return new
     }
     
     func centerX(_ target: LayoutTarget) -> Self {
         let constraint = LayoutConstraint(anchor: .centerX, target: target)
         var new = self
         new.layoutConstraints.append(constraint)
-        return self
+        return new
     }
     
     func centerY(_ target: LayoutTarget) -> Self {
         let constraint = LayoutConstraint(anchor: .centerY, target: target)
         var new = self
         new.layoutConstraints.append(constraint)
-        return self
+        return new
     }
     
     func height(_ target: LayoutTarget) -> Self {
         let constraint = LayoutConstraint(anchor: .height, target: target)
         var new = self
         new.layoutConstraints.append(constraint)
-        return self
+        return new
     }
     
     func width(_ target: LayoutTarget) -> Self {
         let constraint = LayoutConstraint(anchor: .width, target: target)
         var new = self
         new.layoutConstraints.append(constraint)
+        return new
+    }
+}
+
+public extension View where T: UIView {
+    
+    func top(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: YAxisAnchor, _ constant: Float) -> Self {
+        let constraint = Constraint(
+            constant: constant,
+            from: .top,
+            to: anchor,
+            relation: relation)
+        
+        self.object.layoutConstraints.append(constraint)
+        
         return self
+    }
+    
+    func top(_ constant: Float) -> Self {
+        
+        return top(to: .top, constant)
+    }
+    
+    func top(to anchor: YAxisAnchor) -> Self {
+        return top(to: anchor, 0)
     }
 }
 
@@ -93,7 +123,11 @@ extension Float: LayoutTarget { }
 
 extension UIView: LayoutTarget { }
 
-enum LayoutAnchor {
+extension NSLayoutYAxisAnchor: LayoutTarget { }
+
+extension NSLayoutXAxisAnchor: LayoutTarget { }
+
+public enum LayoutAnchor {
     case leading
     case trailing
     case left

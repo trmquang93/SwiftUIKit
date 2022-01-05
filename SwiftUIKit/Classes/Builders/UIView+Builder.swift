@@ -13,10 +13,9 @@ public extension UIView {
         
         if let stackView = self as? UIStackView {
             stackView.arrange(content: content)
-                .with {
-                    $0.alignment = .fill
-                    $0.axis = axis
-                }
+                .with(\.alignment, .fill)
+                .with(\.axis, axis)
+        
         } else {
             
             body(axis: axis, content: content)
@@ -36,22 +35,22 @@ public extension UIView {
 }
 
 
-extension ViewObject where Self: UIView {
+extension UIView {
     @discardableResult
     public func body(@BodyBuilder content: BodyBuildBlock) -> Self {
         let objects = content()
         var subviews: [UIView] = []
         for object in objects {
-            if let sv = object as? ViewObject {
-                subviews.append(sv.object)
-            } else if let svs = object as? [ViewObject] {
-                subviews.append(contentsOf: svs.map({$0.object}))
+            if let sv = object as? UIView {
+                subviews.append(sv)
+            } else if let svs = object as? [UIView] {
+                subviews.append(contentsOf: svs.map({$0}))
             }
         }
         
         for sv in subviews {
             addSubview(sv)
-            sv.object.translatesAutoresizingMaskIntoConstraints = false
+            sv.translatesAutoresizingMaskIntoConstraints = false
         }
         
         let new = activeContraints(inSubviews: subviews)

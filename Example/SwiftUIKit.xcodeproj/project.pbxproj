@@ -10,6 +10,7 @@
 		1B1BC049277EB42C00EA79A0 /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1BC048277EB42C00EA79A0 /* UIColor+Colors.swift */; };
 		1BC6E2B7277EC1C4008D400D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC6E2B6277EC1C4008D400D /* LoginViewController.swift */; };
 		1BC6E2B9277EC697008D400D /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC6E2B8277EC697008D400D /* ActionButton.swift */; };
+		1BC6E2BB277EFC53008D400D /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC6E2BA277EFC53008D400D /* LoginBaseViewController.swift */; };
 		42B2EFFF3BD313F3CA84A98D /* Pods_SwiftUIKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628D0DCE25B75F89072E82FD /* Pods_SwiftUIKit_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* StartViewController.swift */; };
@@ -34,6 +35,7 @@
 		1B1BC048277EB42C00EA79A0 /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		1BC6E2B6277EC1C4008D400D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1BC6E2B8277EC697008D400D /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		1BC6E2BA277EFC53008D400D /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
 		25B321E9AF22443DD0FE982F /* Pods_SwiftUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* SwiftUIKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				1BC6E2BA277EFC53008D400D /* LoginBaseViewController.swift */,
 				1BC6E2B6277EC1C4008D400D /* LoginViewController.swift */,
 				1BC6E2B8277EC697008D400D /* ActionButton.swift */,
 				607FACD71AFB9204008FA782 /* StartViewController.swift */,
@@ -344,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BC6E2B7277EC1C4008D400D /* LoginViewController.swift in Sources */,
+				1BC6E2BB277EFC53008D400D /* LoginBaseViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* StartViewController.swift in Sources */,
 				1B1BC049277EB42C00EA79A0 /* UIColor+Colors.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

@@ -1,46 +1,24 @@
 //
-//  ViewObject.swift
-//  VideoSaverNew
+//  UIView+Constraint.swift
+//  SwiftUIKit
 //
-//  Created by Quang Tran on 12/9/21.
+//  Created by Quang Tran on 02/01/2022.
 //
 
 import UIKit
-
-public protocol ViewObject {
-    var object: UIView { get }
-}
-
-public protocol GenericViewObject: ViewObject {
-    associatedtype View: UIView
-    var view: View { get }
-}
-
-public extension GenericViewObject where Self: UIView {
-    var view: Self {
-        return self
-    }
-    
-    var object: UIView { return view }
-}
-
-
-extension UIView: ViewObject {
-    public var object: UIView { return self }
-}
 
 fileprivate struct SerializedKeys {
     static var layout = "layout"
     static var constraints = "constraints"
 }
 
-extension ViewObject {
-    var layoutConstraints: [LayoutConstraint] {
+extension UIView {
+    var layoutConstraints: [Any] {
         get {
-            objc_getAssociatedObject(self.object, &SerializedKeys.layout) as? [LayoutConstraint] ?? []
+            objc_getAssociatedObject(self, &SerializedKeys.layout) as? [Any] ?? []
         }
         set {
-            objc_setAssociatedObject(self.object, &SerializedKeys.layout, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &SerializedKeys.layout, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
 }
@@ -48,8 +26,6 @@ extension ViewObject {
 
 extension UIView {
     func activeContraints(inSubviews subviews: [UIView]) -> Self {
-        var new = self
-        
         var constraints: [LayoutConstraint] = []
         
         for sv in subviews {
@@ -64,22 +40,26 @@ extension UIView {
                 }
             } else {
                 for constraint in sv.layoutConstraints {
-                    if let view = constraint.target as? UIView {
-                        guard view.hasCommonParent(with: sv) else {
-                            constraints.append(constraint)
-                            continue
-                        }
-                        activeConstraint(constraint, from: sv)
-                    } else {
-                        activeConstraint(constraint, from: sv)
+                    if let xAxisConstraint = constraint as? Constraint<XAxisAnchor> {
+                        
                     }
+//
+//                    if let view = constraint.target as? UIView {
+//                        guard view.hasCommonParent(with: sv) else {
+//                            constraints.append(constraint)
+//                            continue
+//                        }
+//                        activeConstraint(constraint, from: sv)
+//                    } else {
+//                        activeConstraint(constraint, from: sv)
+//                    }
                 }
             }
         }
         
-        new.layoutConstraints.append(contentsOf: constraints)
+        layoutConstraints.append(contentsOf: constraints)
         
-        return new
+        return self
     }
     
     

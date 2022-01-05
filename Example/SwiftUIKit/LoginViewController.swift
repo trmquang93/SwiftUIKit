@@ -8,27 +8,25 @@
 
 import SwiftUIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: LoginBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view
-            .update(\.backgroundColor, value: .white)
-        
-        
         view.body {
             
-            UIImageView(imageNamed: "background")
-            
-            SafeArea(edges: [.bottom, .right]) {
+            SafeArea(edges: [.bottom, .right, .left]) {
                 
-                UIButton.actionButton
-//                    .attributedTitle(NSAttributedString(string: "Login", attributes: [.font: UIFont.systemFont(ofSize: <#T##CGFloat#>)]), for: <#T##UIControl.State#>)
-                    .title("Login", for: .normal)
-                    .onTap(self, action: #selector(buttonAction))
+                Text("New here?").with
+                    .bottom(0)
+                    .leading(20)
+                    .textColor(.white)
+                    .font(.systemFont(ofSize: 16))
                 
-            }
+            }.with
+                .bottom(10)
+                .leading(0)
+                .trailing(0)
         }
     }
     

@@ -10,28 +10,15 @@ import UIKit
 public protocol KeyPathEditable {
 }
 
-extension NSObject: KeyPathEditable { }
-
-extension View: KeyPathEditable {
+public extension KeyPathEditable {
+    var with: With<Self> { return With(self) }
     
     @discardableResult
-    public func update<Value>(_ keyPath: WritableKeyPath<T, Value>, value: Value) -> Self {
-        let view = self.view.update(keyPath, value: value)
-        let copy = View(view)
-        return copy
-    }
-    
-    
-    
-    @discardableResult
-    public func with<V>(_ keyPath: WritableKeyPath<T, V>, _ value: V) -> Self {
-        self.update(keyPath, value: value)
+    func with<V>(_ keyPath: WritableKeyPath<Self, V>, _ value: V) -> Self {
+        let new: Self = self.update(keyPath, value: value)
         
-        return self
+        return new
     }
-}
-
-public extension KeyPathEditable where Self: NSObject {
     
     @discardableResult
     func update<T>(_ keyPath: WritableKeyPath<Self, T>, value: T) -> Self {
@@ -40,13 +27,28 @@ public extension KeyPathEditable where Self: NSObject {
         
         return copy
     }
+}
+
+extension NSObject: KeyPathEditable { }
+
+@dynamicMemberLookup
+public struct With<T: KeyPathEditable> {
+    var object: T
     
+    public init(_ object: T) {
+        self.object = object
+    }
     
-    
-    @discardableResult
-    func with<V>(_ keyPath: WritableKeyPath<Self, V>, _ value: V) -> Self {
-        self.update(keyPath, value: value)
+    public subscript<V>(dynamicMember member: WritableKeyPath<T, V>) -> ((V) -> Self) {
         
-        return self
+        @discardableResult
+        func update(_ value: V) -> Self {
+            self.object.update(member, value: value)
+            return self
+        }
+        
+        return { (newValue:V) in
+            return update(newValue)
+        }
     }
 }

@@ -14,8 +14,6 @@ extension UIButton {
             .with
             .height(60)
             .width(144)
-            .trailing(27)
-            .bottom(31)
             .borderColor(UIColor.white.cgColor)
             .cornerRadius(7)
             .borderWidth(1)

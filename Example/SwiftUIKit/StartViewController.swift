@@ -11,6 +11,7 @@ import SwiftUIKit
 
 class StartViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +27,8 @@ class StartViewController: UIViewController {
             SafeArea(edges: [.bottom, .right]) {
                 
                 UIButton.actionButton
+                    .trailing(27)
+                    .bottom(31)
                     .title("Get started", for: .normal)
                     .onTap(self, action: #selector(buttonAction))
                 
