@@ -17,11 +17,36 @@ class LoginViewController: LoginBaseViewController {
             
             SafeArea(edges: [.bottom, .right, .left]) {
                 
-                Text("New here?").with
-                    .bottom(0)
-                    .leading(20)
-                    .textColor(.white)
-                    .font(.systemFont(ofSize: 16))
+                UIView {
+                    UIButton.actionButton
+                        .trailing(0)
+                        .bottom(0)
+                        .title("Login", for: .normal)
+                        .onTap(self, action: #selector(buttonAction))
+                    
+                    Stack(axis: .horizontal) {
+                        
+                        Text("New here?").with
+                            .textColor(.white)
+                            .font(.systemFont(ofSize: 16))
+                        
+                        Spacer(width: 10)
+                        
+                        UIButton(type: .system).with
+                            .tintColor(.white)
+                            .title("Register", for: .normal)
+                            .font(.systemFont(ofSize: 16, weight: .bold), for: .normal)
+                        
+                    }.with
+                        .height(22)
+                        .bottom(0)
+                        .leading(0)
+                    
+                }.with
+                    .bottom(20)
+                    .leading(25)
+                    .trailing(30)
+                
                 
             }.with
                 .bottom(10)
