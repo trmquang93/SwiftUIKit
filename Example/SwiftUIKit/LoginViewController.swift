@@ -16,37 +16,58 @@ class LoginViewController: LoginBaseViewController {
         view.body {
             
             SafeArea(edges: [.bottom, .right, .left]) {
-                
-                UIView {
-                    UIButton.actionButton
-                        .trailing(0)
-                        .bottom(0)
-                        .title("Login", for: .normal)
-                        .onTap(self, action: #selector(buttonAction))
-                    
+                Stack(axis: .vertical) {
                     Stack(axis: .horizontal) {
-                        
-                        Text("New here?").with
-                            .textColor(.white)
-                            .font(.systemFont(ofSize: 16))
-                        
-                        Spacer(width: 10)
+                        UIButton(type: .system).with
+                            .image(UIImage(named: "apple logo")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                            .width(to: .height)
                         
                         UIButton(type: .system).with
-                            .tintColor(.white)
-                            .title("Register", for: .normal)
-                            .font(.systemFont(ofSize: 16, weight: .bold), for: .normal)
+                            .image(UIImage(named: "apple logo")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                            .width(to: .height)
+                        
+                        UIButton(type: .system).with
+                            .image(UIImage(named: "apple logo")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                            .width(to: .height)
                         
                     }.with
-                        .height(22)
-                        .bottom(0)
                         .leading(0)
+                        .height(60)
+                    
+                    Spacer(height: 100)
+                    
+                    UIView {
+                        UIButton.actionButton
+                            .trailing(0)
+                            .bottom(0)
+                            .title("Login", for: .normal)
+                            .onTap(self, action: #selector(buttonAction))
+                        
+                        Stack(axis: .horizontal) {
+                            
+                            Text("New here?").with
+                                .textColor(.white)
+                                .font(.systemFont(ofSize: 16))
+                            
+                            Spacer(width: 10)
+                            
+                            UIButton(type: .system).with
+                                .tintColor(.white)
+                                .title("Register", for: .normal)
+                                .font(.systemFont(ofSize: 16, weight: .bold), for: .normal)
+                            
+                        }.with
+                            .height(22)
+                            .bottom(0)
+                            .leading(0)
+                        
+                    }.with
+                        .bottom(20)
+                        .leading(25)
+                        .trailing(30)
                     
                 }.with
-                    .bottom(20)
-                    .leading(25)
-                    .trailing(30)
-                
+                    .alignment(.leading)
                 
             }.with
                 .bottom(10)
