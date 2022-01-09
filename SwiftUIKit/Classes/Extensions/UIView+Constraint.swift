@@ -59,6 +59,8 @@ extension UIView {
                 fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
             case .greaterThanOrEqual:
                 fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+            @unknown default:
+                break
             }
         }
         else if let yAxisConstraint = constraint as? Constraint<YAxisAnchor> {
@@ -71,6 +73,9 @@ extension UIView {
                 fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
             case .greaterThanOrEqual:
                 fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+                
+            @unknown default:
+                break
             }
         }
         
@@ -100,6 +105,9 @@ extension UIView {
                 } else {
                     fromAnchor.constraint(greaterThanOrEqualToConstant: constant).isActive = true
                 }
+                
+            @unknown default:
+                break
             }
         }
     }

@@ -9,6 +9,15 @@ import Foundation
 import UIKit
 
 public extension View where T: UIView {
+    func ratio(_ ratio: Float) -> Self {
+        
+        self.object.widthAnchor.constraint(equalTo: self.object.heightAnchor, multiplier: CGFloat(ratio)).isActive = true
+        
+        return self
+    }
+}
+
+public extension View where T: UIView {
     
     func right(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: XAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
