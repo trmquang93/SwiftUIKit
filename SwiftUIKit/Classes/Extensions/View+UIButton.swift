@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension View where T: UIButton {
+extension With where T: UIButton {
     public func title(_ title: String?, for state: UIControl.State) -> Self {
         if let currentAttributedTitle = view.currentAttributedTitle {
             let newTitle = NSMutableAttributedString(attributedString: currentAttributedTitle)

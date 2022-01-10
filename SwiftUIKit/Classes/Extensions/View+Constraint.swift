@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     func ratio(_ ratio: Float) -> Self {
         
         self.object.widthAnchor.constraint(equalTo: self.object.heightAnchor, multiplier: CGFloat(ratio)).isActive = true
@@ -17,7 +17,7 @@ public extension View where T: UIView {
     }
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func right(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: XAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -37,7 +37,7 @@ public extension View where T: UIView {
     
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func width(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: DimensionAnchor?, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -57,7 +57,7 @@ public extension View where T: UIView {
     
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func height(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: DimensionAnchor?, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -76,7 +76,7 @@ public extension View where T: UIView {
     }
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func centerY(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: YAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -95,7 +95,7 @@ public extension View where T: UIView {
     }
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func centerX(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: XAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -114,7 +114,7 @@ public extension View where T: UIView {
     }
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func trailing(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: XAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -133,7 +133,7 @@ public extension View where T: UIView {
     }
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func leading(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: XAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -152,7 +152,7 @@ public extension View where T: UIView {
     }
 }
 
-public extension View where T:UIView {
+public extension With where T:UIView {
     func left(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: XAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
             constant: constant,
@@ -174,7 +174,7 @@ public extension View where T:UIView {
     
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func bottom(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: YAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
@@ -194,7 +194,7 @@ public extension View where T: UIView {
     }
 }
 
-public extension View where T: UIView {
+public extension With where T: UIView {
     
     func top(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: YAxisAnchor, _ constant: Float = 0) -> Self {
         let constraint = Constraint(

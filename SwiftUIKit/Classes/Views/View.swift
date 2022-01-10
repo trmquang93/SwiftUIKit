@@ -7,14 +7,12 @@
 
 import UIKit
 
-public typealias View = With
-
-extension View where T: UIView {
+extension With where T: UIView {
     
     public var view: T { return object }
 }
 
-extension View where T: UIView {
+extension With where T: UIView {
     @discardableResult
     public func body(@BodyBuilder content: BodyBuildBlock) -> Self {
         object.body(content: content)
@@ -44,7 +42,7 @@ extension View where T: UIView {
     }
 }
 
-extension View where T: UIStackView {
+extension With where T: UIStackView {
     @discardableResult
     public func arrange(@BodyBuilder content: BodyBuildBlock) -> Self {
         object.arrange(content: content)

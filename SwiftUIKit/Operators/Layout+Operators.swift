@@ -23,14 +23,14 @@ public func <~ <T:UIView>(_ left: inout T?, _ right: T) -> T {
 }
 
 @discardableResult
-public func <~ <T: UIView> (_ left: inout T, _ right: View<T>) -> View<T> {
+public func <~ <T: UIView> (_ left: inout T, _ right: With<T>) -> With<T> {
     left <~ right.object
     
     return right
 }
 
 @discardableResult
-public func <~ <T: UIView> (_ left: inout T?, _ right: View<T>) -> View<T> {
+public func <~ <T: UIView> (_ left: inout T?, _ right: With<T>) -> With<T> {
     left <~ right.object
     
     return right
