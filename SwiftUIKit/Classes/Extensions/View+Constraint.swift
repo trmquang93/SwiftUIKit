@@ -214,6 +214,15 @@ public extension With where T: UIView {
     }
 }
 
+public extension With where T: UIView {
+    func fillContainer() -> Self {
+        return self.top(0)
+            .bottom(0)
+            .leading(0)
+            .trailing(0)
+    }
+}
+
 
 public protocol LayoutTarget { }
 
