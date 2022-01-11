@@ -37,7 +37,7 @@ public extension UIView {
 
 extension UIView {
     @discardableResult
-    public func body(@BodyBuilder content: BodyBuildBlock) -> Self {
+    @objc public func body(@BodyBuilder content: BodyBuildBlock) -> Self {
         let objects = content()
         var subviews: [UIView] = []
         for object in objects {
@@ -60,7 +60,7 @@ extension UIView {
     
     
     @discardableResult
-    public func body(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
+    @objc public func body(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
         
         body {
             UIStackView(axis: axis, content: content)
@@ -71,13 +71,13 @@ extension UIView {
     }
     
     @discardableResult
-    public func vertical(spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
+    @objc public func vertical(spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
         
         self.body(axis: .vertical, spacing: spacing, content: content)
     }
     
     @discardableResult
-    public func horizontal(spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
+    @objc public func horizontal(spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
         
         self.body(axis: .horizontal, spacing: spacing, content: content)
     }

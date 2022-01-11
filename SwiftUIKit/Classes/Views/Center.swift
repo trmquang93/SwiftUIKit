@@ -38,6 +38,18 @@ public class Container: UIView {
         }
         return false
     }
+    
+    @discardableResult
+    public override func body(@BodyBuilder content: BodyBuildBlock) -> Self {
+        contentView.body(content: content)
+        return self
+    }
+    
+    @discardableResult
+    public override func body(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
+        contentView.body(content: content)
+        return self
+    }
 }
 
 public class Center: Container {
