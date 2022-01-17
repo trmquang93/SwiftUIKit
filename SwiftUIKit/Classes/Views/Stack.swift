@@ -7,5 +7,4 @@
 
 import UIKit
 
-public class Stack: UIStackView {
-}
+public typealias Stack = UIStackView
