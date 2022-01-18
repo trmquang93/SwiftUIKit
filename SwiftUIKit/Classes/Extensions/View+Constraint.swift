@@ -39,11 +39,12 @@ public extension With where T: UIView {
 
 public extension With where T: UIView {
     
-    func width(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: DimensionAnchor?, _ constant: Float = 0) -> Self {
+    func width(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: DimensionAnchor, multiplyBy multiplier: Float = 1, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
             constant: constant,
             fromAnchor: .width,
             toAnchor: anchor,
+            multiplier: multiplier,
             relation: relation)
         
         self.object.layoutConstraints.append(constraint)
@@ -52,18 +53,27 @@ public extension With where T: UIView {
     }
     
     func width(_ constant: Float) -> Self {
-        return width(to: nil, constant)
+        let constraint = Constraint(
+            constant: constant,
+            fromAnchor: DimensionAnchor.width,
+            toAnchor: nil,
+            relation: .equal)
+        
+        self.object.layoutConstraints.append(constraint)
+        
+        return self
     }
     
 }
 
 public extension With where T: UIView {
     
-    func height(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: DimensionAnchor?, _ constant: Float = 0) -> Self {
+    func height(_ relation: NSLayoutConstraint.Relation = .equal, to anchor: DimensionAnchor, multiplyBy multiplier: Float = 1, _ constant: Float = 0) -> Self {
         let constraint = Constraint(
             constant: constant,
             fromAnchor: .height,
             toAnchor: anchor,
+            multiplier: multiplier,
             relation: relation)
         
         self.object.layoutConstraints.append(constraint)
@@ -72,7 +82,15 @@ public extension With where T: UIView {
     }
     
     func height(_ constant: Float) -> Self {
-        return height(to: nil, constant)
+        let constraint = Constraint(
+            constant: constant,
+            fromAnchor: DimensionAnchor.height,
+            toAnchor: nil,
+            relation: .equal)
+        
+        self.object.layoutConstraints.append(constraint)
+        
+        return self
     }
 }
 

@@ -12,7 +12,7 @@ public protocol ConstraintProtocol {
     var constant: Float { get }
     var from: AnchorType { get }
     var to: AnchorType? { get }
-    var multiplier: Float { get }
+    var multiplier: Float { get set }
     var relation: NSLayoutConstraint.Relation { get }
 }
 

@@ -82,26 +82,27 @@ extension UIView {
         else if let dimensionAnchor = constraint as? Constraint<DimensionAnchor> {
             let fromAnchor: NSLayoutDimension = dimensionAnchor.fromAnchor.anchor(for: view)
             let constant = CGFloat(constraint.constant)
-            
+            let multiplier = CGFloat(constraint.multiplier)
             let toAnchor: NSLayoutDimension? = dimensionAnchor.toAnchor?.anchor(for: self)
             
             switch dimensionAnchor.relation {
             case .lessThanOrEqual:
                 if let to = toAnchor {
-                    fromAnchor.constraint(lessThanOrEqualTo: to, constant: constant).isActive = true
+                    
+                    fromAnchor.constraint(lessThanOrEqualTo: to, multiplier: multiplier, constant: constant).isActive = true
                 } else {
                     fromAnchor.constraint(lessThanOrEqualToConstant: constant).isActive = true
                 }
             case .equal:
                 if let to = toAnchor {
-                    fromAnchor.constraint(equalTo: to, constant: constant).isActive = true
+                    fromAnchor.constraint(equalTo: to, multiplier: multiplier, constant: constant).isActive = true
                 } else {
                     fromAnchor.constraint(equalToConstant: constant).isActive = true
                 }
             case .greaterThanOrEqual:
                 
                 if let to = toAnchor {
-                    fromAnchor.constraint(greaterThanOrEqualTo: to, constant: constant).isActive = true
+                    fromAnchor.constraint(greaterThanOrEqualTo: to, multiplier: multiplier, constant: constant).isActive = true
                 } else {
                     fromAnchor.constraint(greaterThanOrEqualToConstant: constant).isActive = true
                 }
