@@ -49,16 +49,19 @@ extension UIView {
     
     
     private func activeConstraint(_ constraint: ConstraintProtocol, from view: UIView) {
+        var layoutContraint: NSLayoutConstraint?
+        
         if let xAxisConstraint = constraint as? Constraint<XAxisAnchor> {
             let fromAnchor: NSLayoutXAxisAnchor = xAxisConstraint.fromAnchor.anchor(for: view)
             let toAnchor: NSLayoutXAxisAnchor = xAxisConstraint.toAnchor!.anchor(for: self)
+            
             switch xAxisConstraint.relation {
             case .lessThanOrEqual:
-                fromAnchor.constraint(lessThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+                layoutContraint = fromAnchor.constraint(lessThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant))
             case .equal:
-                fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+                layoutContraint = fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant))
             case .greaterThanOrEqual:
-                fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+                layoutContraint = fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant))
             @unknown default:
                 break
             }
@@ -68,11 +71,11 @@ extension UIView {
             let toAnchor: NSLayoutYAxisAnchor = yAxisConstraint.toAnchor!.anchor(for: self)
             switch yAxisConstraint.relation {
             case .lessThanOrEqual:
-                fromAnchor.constraint(lessThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+                layoutContraint = fromAnchor.constraint(lessThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant))
             case .equal:
-                fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+                layoutContraint = fromAnchor.constraint(equalTo: toAnchor, constant: CGFloat(constraint.constant))
             case .greaterThanOrEqual:
-                fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant)).isActive = true
+                layoutContraint = fromAnchor.constraint(greaterThanOrEqualTo: toAnchor, constant: CGFloat(constraint.constant))
                 
             @unknown default:
                 break
@@ -89,28 +92,31 @@ extension UIView {
             case .lessThanOrEqual:
                 if let to = toAnchor {
                     
-                    fromAnchor.constraint(lessThanOrEqualTo: to, multiplier: multiplier, constant: constant).isActive = true
+                    layoutContraint = fromAnchor.constraint(lessThanOrEqualTo: to, multiplier: multiplier, constant: constant)
                 } else {
-                    fromAnchor.constraint(lessThanOrEqualToConstant: constant).isActive = true
+                    layoutContraint = fromAnchor.constraint(lessThanOrEqualToConstant: constant)
                 }
             case .equal:
                 if let to = toAnchor {
-                    fromAnchor.constraint(equalTo: to, multiplier: multiplier, constant: constant).isActive = true
+                    layoutContraint = fromAnchor.constraint(equalTo: to, multiplier: multiplier, constant: constant)
                 } else {
-                    fromAnchor.constraint(equalToConstant: constant).isActive = true
+                    layoutContraint = fromAnchor.constraint(equalToConstant: constant)
                 }
             case .greaterThanOrEqual:
                 
                 if let to = toAnchor {
-                    fromAnchor.constraint(greaterThanOrEqualTo: to, multiplier: multiplier, constant: constant).isActive = true
+                    layoutContraint = fromAnchor.constraint(greaterThanOrEqualTo: to, multiplier: multiplier, constant: constant)
                 } else {
-                    fromAnchor.constraint(greaterThanOrEqualToConstant: constant).isActive = true
+                    layoutContraint = fromAnchor.constraint(greaterThanOrEqualToConstant: constant)
                 }
                 
             @unknown default:
                 break
             }
         }
+        
+        layoutContraint?.priority = .init(rawValue: constraint.priority)
+        layoutContraint?.isActive = true
     }
     
     private func activeConstraint(_ constraint: LayoutConstraint, from view: UIView) {

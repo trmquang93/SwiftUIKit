@@ -13,6 +13,7 @@ public protocol ConstraintProtocol {
     var from: AnchorType { get }
     var to: AnchorType? { get }
     var multiplier: Float { get set }
+    var priority: Float { get set }
     var relation: NSLayoutConstraint.Relation { get }
 }
 
@@ -24,6 +25,7 @@ public struct Constraint<T: AnchorType>: ConstraintProtocol {
     public var toAnchor: T?
     public var multiplier: Float = 1
     public var relation: NSLayoutConstraint.Relation = .equal
+    public var priority: Float = 1000
 }
 
 public struct Anchor<T: AnchorType> {

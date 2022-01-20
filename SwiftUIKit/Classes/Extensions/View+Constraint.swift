@@ -9,6 +9,20 @@ import Foundation
 import UIKit
 
 public extension With where T: UIView {
+    func priority(_ priority: Float) -> Self {
+        if var constraint = self.object.layoutConstraints.last {
+            constraint.priority = priority
+            
+            self.object.layoutConstraints.removeLast()
+            self.object.layoutConstraints.append(constraint)
+            
+        }
+        
+        return self
+    }
+}
+
+public extension With where T: UIView {
     func ratio(_ ratio: Float) -> Self {
         
         self.object.widthAnchor.constraint(equalTo: self.object.heightAnchor, multiplier: CGFloat(ratio)).isActive = true
