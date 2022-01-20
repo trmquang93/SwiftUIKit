@@ -13,13 +13,10 @@ public class Container: UIView {
     public init(@BodyBuilder content: BodyBuildBlock) {
         super.init(frame: .zero)
         
-        let view = UIView()
+        let view = UIView(content: content)
         
         addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.body(content: content)
-        
         view.clipsToBounds = false
         
         contentView = view
@@ -47,7 +44,7 @@ public class Container: UIView {
     
     @discardableResult
     public override func body(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
-        contentView.body(content: content)
+        contentView.body(axis: axis, spacing: spacing, content: content)
         return self
     }
 }
