@@ -81,6 +81,32 @@ SafeArea(edges: [.bottom, .right]) {
     
 }
 ```
+## Extend views
+Any view can be extend to have new chainable functions like below:
+```swift
+public extension With where T: UIView {
+    func contentHuggingPriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) -> Self {
+        
+        view.setContentHuggingPriority(priority, for: axis)
+        
+        return self
+    }
+    
+    func contentCompressionResistancePriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) -> Self {
+        
+        view.setContentCompressionResistancePriority(priority, for: axis)
+        
+        return self
+    }
+}
+
+```
+Then use:
+```swift
+UILabel().with
+    .contentHuggingPriority(.required, for: .horizontal)
+    .textColor(.lightTextColor)
+```
 # Author
 
 QuangTran, quangtm@unitvn.com
