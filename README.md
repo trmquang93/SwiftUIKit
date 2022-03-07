@@ -1,9 +1,9 @@
 # SwiftUIKit
 
-[![CI Status](https://img.shields.io/travis/QuangTran/SwiftUIKit.svg?style=flat)](https://travis-ci.org/QuangTran/SwiftUIKit)
-[![Version](https://img.shields.io/cocoapods/v/SwiftUIKit.svg?style=flat)](https://cocoapods.org/pods/SwiftUIKit)
-[![License](https://img.shields.io/cocoapods/l/SwiftUIKit.svg?style=flat)](https://cocoapods.org/pods/SwiftUIKit)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftUIKit.svg?style=flat)](https://cocoapods.org/pods/SwiftUIKit)
+[![CI Status](https://img.shields.io/travis/QuangTran/DeclarativeUI.svg?style=flat)](https://travis-ci.org/QuangTran/SwiftUIKit)
+[![Version](https://img.shields.io/cocoapods/v/DeclarativeUI.svg?style=flat)](https://cocoapods.org/pods/DeclarativeUI)
+[![License](https://img.shields.io/cocoapods/l/DeclarativeUI.svg?style=flat)](https://cocoapods.org/pods/DeclarativeUI)
+[![Platform](https://img.shields.io/cocoapods/p/DeclarativeUI.svg?style=flat)](https://cocoapods.org/pods/DeclarativeUI)
 
 <p align="center">🚀❤️ YOU WILL LOVE <b>UIKIT</b> MORE THAN EVER ❤️🚀</p>
 <br/>
@@ -11,13 +11,13 @@
 <p align="center">Build awesome responsive UIs even simpler than with SwiftUI <b>cause you already know everything</b>.</p>
 <br/>
 
-## Example
+# Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+# Requirements
 
-## Installation
+# Installation
 
 SwiftUIKit is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -25,11 +25,66 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'SwiftUIKit'
 ```
+# Usage
+## Constraints
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    view.body {
+        
+        SafeArea(edges: [.bottom, .right]) {
+            UIButton.actionButton
+                .trailing(27)
+                .bottom(31)
+                .title("Get started", for: .normal)
+                .onTap(self, action: #selector(buttonAction))
+            
+        }
+        
+        Stack(axis: .vertical) {
+            
+            UIImageView(imageNamed: "ls_yapcasialogomark").with
+                .contentMode(.scaleAspectFit)
+                .width(60)
+                .height(70)
+            
+            UILabel("Lorem").with
+                .font(.systemFont(ofSize: 36))
+                .textColor(.tintColor)
+            
+            UILabel("consequat duis").with
+                .textColor(.tintColor)
+            
+            UILabel("enim velit").with
+                .textColor(.tintColor)
+            
+        }.with
+            .alignment(.leading)
+            .leading(60)
+            .bottom(224)
+    }
+}
+```
+## Assignable to variable
+```swift
+//Declare variale
+var startButton: UIButton!
 
-## Author
+//Then
+SafeArea(edges: [.bottom, .right]) {
+    startButton <~ UIButton()
+        .trailing(27)
+        .bottom(31)
+        .title("Get started", for: .normal)
+        .onTap(self, action: #selector(buttonAction))
+    
+}
+```
+# Author
 
 QuangTran, quangtm@unitvn.com
 
-## License
+# License
 
 SwiftUIKit is available under the MIT license. See the LICENSE file for more info.

@@ -10,7 +10,7 @@ import UIKit
 import DeclarativeUI
 
 class StartViewController: LoginBaseViewController {
-
+    weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class StartViewController: LoginBaseViewController {
         view.body {
             
             SafeArea(edges: [.bottom, .right]) {
-                UIButton.actionButton
+                startButton <~ UIButton.actionButton
                     .trailing(27)
                     .bottom(31)
                     .title("Get started", for: .normal)
