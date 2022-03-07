@@ -19,11 +19,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 # Installation
 
-SwiftUIKit is available through [CocoaPods](https://cocoapods.org). To install
+DeclarativeUI is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SwiftUIKit'
+pod 'DeclarativeUI'
 ```
 # Usage
 ## Constraints
@@ -113,4 +113,4 @@ QuangTran, quangtm@unitvn.com
 
 # License
 
-SwiftUIKit is available under the MIT license. See the LICENSE file for more info.
+DeclarativeUI is available under the MIT license. See the LICENSE file for more info.
