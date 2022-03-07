@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'SwiftUIKit'
+  s.name             = 'DeclarativeUI'
   s.version          = '0.1.0'
   s.summary          = 'Build awesome responsive UIs even simpler than with SwiftUI cause you already know everything.'
   s.description      = <<-DESC
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.swift_version = '5'
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'SwiftUIKit/**/*.{swift}'
   

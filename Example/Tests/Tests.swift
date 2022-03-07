@@ -1,5 +1,5 @@
 import XCTest
-import SwiftUIKit
+import DeclarativeUI
 
 class Tests: XCTestCase {
     

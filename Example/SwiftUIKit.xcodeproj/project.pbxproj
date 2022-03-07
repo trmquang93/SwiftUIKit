@@ -18,6 +18,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		74F4082027D6512000732D67 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F4081F27D6512000732D67 /* SwiftUIView.swift */; };
 		81220DCCF1F11ED11D133449 /* Pods_SwiftUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B321E9AF22443DD0FE982F /* Pods_SwiftUIKit_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,10 +49,11 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		628D0DCE25B75F89072E82FD /* Pods_SwiftUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74F4081F27D6512000732D67 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		8547E93BBD4C1F066857E86B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		8D8796D57ED316903A2D8868 /* Pods-SwiftUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Example/Pods-SwiftUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A75B9D65469EFDB9E664BC3B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		CEBE4823F7ABCBD11BF2DCB5 /* SwiftUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftUIKit.podspec; path = ../SwiftUIKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CEBE4823F7ABCBD11BF2DCB5 /* DeclarativeUI.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DeclarativeUI.podspec; path = ../DeclarativeUI.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F104A9B08AF4CD9A96572F3F /* Pods-SwiftUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Tests/Pods-SwiftUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F2857D6B014E39DB59BFA26D /* Pods-SwiftUIKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Example.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Example/Pods-SwiftUIKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		FF1B6C45D06150610722290E /* Pods-SwiftUIKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIKit_Tests/Pods-SwiftUIKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				74F4081F27D6512000732D67 /* SwiftUIView.swift */,
 			);
 			name = "Example for SwiftUIKit";
 			path = SwiftUIKit;
@@ -153,7 +156,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				CEBE4823F7ABCBD11BF2DCB5 /* SwiftUIKit.podspec */,
+				CEBE4823F7ABCBD11BF2DCB5 /* DeclarativeUI.podspec */,
 				A75B9D65469EFDB9E664BC3B /* README.md */,
 				8547E93BBD4C1F066857E86B /* LICENSE */,
 			);
@@ -306,11 +309,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftUIKit_Example/Pods-SwiftUIKit_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftUIKit/SwiftUIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/DeclarativeUI/DeclarativeUI.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeclarativeUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -347,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BC6E2B7277EC1C4008D400D /* LoginViewController.swift in Sources */,
+				74F4082027D6512000732D67 /* SwiftUIView.swift in Sources */,
 				1BC6E2BB277EFC53008D400D /* LoginBaseViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* StartViewController.swift in Sources */,
 				1B1BC049277EB42C00EA79A0 /* UIColor+Colors.swift in Sources */,

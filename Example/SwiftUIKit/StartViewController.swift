@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftUIKit
+import DeclarativeUI
 
 class StartViewController: LoginBaseViewController {
 
@@ -33,14 +33,14 @@ class StartViewController: LoginBaseViewController {
                     .width(60)
                     .height(70)
                 
-                Text("Lorem").with
+                UILabel("Lorem").with
                     .font(.systemFont(ofSize: 36))
                     .textColor(.tintColor)
                 
-                Text("consequat duis").with
+                UILabel("consequat duis").with
                     .textColor(.tintColor)
                 
-                Text("enim velit").with
+                UILabel("enim velit").with
                     .textColor(.tintColor)
                 
             }.with

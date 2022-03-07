@@ -6,10 +6,10 @@
 //  Copyright © 2021 CocoaPods. All rights reserved.
 //
 
-import SwiftUIKit
+import DeclarativeUI
 
 extension UIButton {
-    static var actionButton: View<UIButton> {
+    static var actionButton: With<UIButton> {
         return UIButton(type: .system)
             .with
             .height(60)

@@ -8,6 +8,7 @@
 import UIKit
 
 
+@available(iOS 11.0, *)
 public class SafeArea: Container {
     public init(edges: UIRectEdge, @BodyBuilder content: BodyBuildBlock) {
         super.init(content: content)

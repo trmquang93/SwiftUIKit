@@ -1,16 +1,23 @@
 PODS:
-  - SwiftUIKit (0.1.0)
+  - DeclarativeUI (0.1.0)
+  - IQKeyboardManagerSwift (6.5.9)
 
 DEPENDENCIES:
-  - SwiftUIKit (from `../`)
+  - DeclarativeUI (from `../`)
+  - IQKeyboardManagerSwift
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
 
 EXTERNAL SOURCES:
-  SwiftUIKit:
+  DeclarativeUI:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftUIKit: 29eb26e0e7d2aa869c0d6758ef14bb37cf311361
+  DeclarativeUI: 6d6de5948d1cba013cd15a077c2c0bde2def1287
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
 
-PODFILE CHECKSUM: 2f23f01c778831f0492d1af0c052cdfdd5ee5aed
+PODFILE CHECKSUM: 374bbc26f4abcd4d7729eca10d8bfafa3fbba7c6
 
 COCOAPODS: 1.11.2
