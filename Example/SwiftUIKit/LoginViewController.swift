@@ -47,6 +47,17 @@ class LoginViewController: LoginBaseViewController {
                                 .borderWidth(1)
                                 .backgroundColor(.white)
                                 .width(to: .width)
+                            
+                            UIView {
+                                UIButton(type: .system).with
+                                    .title("Forgot Passwords?", for: .normal)
+                                    .font(.systemFont(ofSize: 16, weight: .bold), for: .normal)
+                                    .titleColor(.tintColor, for: .normal)
+                                    .trailing(to: .trailing)
+                                    .height(to: .height)
+                            }.with
+                                .trailing(0)
+                            
                         }.with
                             .spacing(10)
                     }.with
@@ -73,6 +84,7 @@ class LoginViewController: LoginBaseViewController {
                     
                     UIView {
                         UIButton.actionButton
+                            .height(to: .height)
                             .trailing(0)
                             .bottom(0)
                             .title("Login", for: .normal)
@@ -87,8 +99,8 @@ class LoginViewController: LoginBaseViewController {
                             Spacer(width: 10)
                             
                             UIButton(type: .system).with
-                                .tintColor(.white)
                                 .title("Register", for: .normal)
+                                .tintColor(.white)
                                 .font(.systemFont(ofSize: 16, weight: .bold), for: .normal)
                             
                         }.with
@@ -114,5 +126,7 @@ class LoginViewController: LoginBaseViewController {
     
     
     @objc func buttonAction() {
+        
+        navigationController?.popViewController(animated: true)
     }
 }
