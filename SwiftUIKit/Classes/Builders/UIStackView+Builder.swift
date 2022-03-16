@@ -35,4 +35,31 @@ extension UIStackView {
         return activeContraints(inSubviews: content)
     }
     
+    @discardableResult
+    public func insert(_ content: [UIView], at position: Int) -> Self {
+        
+        for sv in content.reversed() {
+            insertArrangedSubview(sv, at: position)
+            sv.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        return activeContraints(inSubviews: content)
+    }
+    
+    
+    @discardableResult
+    public func insert(at position: Int, @BodyBuilder content: BodyBuildBlock) -> Self {
+        let objects = content()
+        var subviews: [UIView] = []
+        
+        for object in objects {
+            if let sv = object as? ViewObject {
+                subviews.append(sv.viewObject)
+            } else if let svs = object as? [ViewObject] {
+                subviews.append(contentsOf: svs.map({$0.viewObject}))
+            }
+        }
+        
+        return self.arrange(subviews)
+    }
 }
