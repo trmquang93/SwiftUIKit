@@ -62,12 +62,10 @@ extension UIView {
     @discardableResult
     @objc public func body(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, @BodyBuilder content: BodyBuildBlock) -> Self {
         
-        body {
+        return body {
             UIStackView(axis: axis, content: content)
                 .with.spacing(spacing)
         }
-        
-        return self
     }
     
     @discardableResult
